@@ -7,19 +7,20 @@ function printOdds(count) {
   }
 }
 printOdds(20);
-printOdds(120)
+printOdds(120);
 
 // Exercise 2 Section
-let var1 = `Congrats ${userName}, you can drive!`;
-let var2 = `Sorry ${userName}, but you need to wait until you're 16.`
-
 function checkAge(userName, age){
+    let var1 = `Congrats ${userName}, you can drive!`;
+    let var2 = `Sorry ${userName}, but you need to wait until you're 16.`;
+
     if(age < 16){
         console.log(var1);
     } else {
         console.log(var2);
     }
 }
+
 checkAge("Ashley,", 17);
 checkAge("Bob", 14);
 checkAge("Kevin", 24);
@@ -54,22 +55,26 @@ console.log(quadrantCheck(9 , 0));
 console.log(quadrantCheck(0 , 0));
 
 // Exercise 4 section
-function triangleCheck(x,y,z){
-    let isTriangle = isTriangle(x,y,z);
-    if (isTriangle){
-    if(x == y || y == z || x == z){
-        return `This is an isoceles triangle.`;
-    } else if(x == y && y == z){
-            return `This is an equilateral triangle.`;
-    } else{
-        return 'This is an scalene triangle.';
-    }
-  } else {
-    return `Not a triangle.`;
-  }
+function isCorrectTriangle(x, y, z){
+    return x + y > z && x + z > y && y + z > x;
 }
 
-console.log(triangleCheck(1, 2, 2));
-console.log(triangleCheck(3, 3, 3));
-console.log(triangleCheck(4, 5,6));
-console.log(triangleCheck(2, 2, 3));
+function checkTriangle(x, y, z){
+    let isCorrect = isCorrectTriangle(x, y, z);
+    if (isCorrect) {
+        if(x == y && y == z) {
+            return `Equilateral triangle`;
+        } else if (x == y || y == z || x == z) {
+            return `Isosceles triangle`;
+        } else {
+            return 'Scalene triangle';
+        }
+    } else {
+        return `Not a correct triangle.`;
+    }
+}
+
+console.log(checkTriangle(3, 3, 3));
+console.log(checkTriangle(1, 2, 2));
+console.log(checkTriangle(4, 5, 6));
+console.log(checkTriangle(1, 1, 2));
